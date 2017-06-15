@@ -58,37 +58,62 @@
         Choose 30 Minute Slot for Follow Ups.
     </p>
 
-    <div class="dropdown">
-        <button onclick="myFunction()" class="dropbtn">&nbsp; Appointment Times &nbsp;</button>
-        <div id="myDropdown" class="dropdown-content">
-            <a href="#home">@DateTime.Now.Date.AddHours(14)</a>
-            <a href="#about">@DateTime.Now.Date.AddHours(15)</a>
-            <a href="#contact">@DateTime.Now.Date.AddHours(16)</a>
-        </div>
-    </div>
+    <label>Appointment Date</label>
+      
+    <input type="date" id="ddl" onchange="configureDropDownLists(this,document.getElementById('ddl2'))" />
 
-    <script>
-/* When the user clicks on the button,
-toggle between hiding and showing the dropdown content */
-function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
-}
+    <label>Time</label>
+    <select id="ddl2"></select>
 
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
+    <script type="text/javascript">
+    function configureDropDownLists(ddl1, ddl2) {
+        var tues = ['2PM', '3PM', '4PM'];
+        var thurs = ['2PM', '3PM', '4PM', '5PM'];
+        var fri = ['2PM', '3PM', '4PM', '5PM'];
+        var sat = ['8AM', '9AM'];
+        var a = new Date(document.getElementById("ddl").value);
+        var n = a.getDay();
 
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
+        switch (n) {
+            case 1:
+                ddl2.options.length = 0;
+                for (i = 0; i < tues.length; i++) {
+                    createOption(ddl2, tues[i], tues[i]);
+                }
+                break;
+            case 3:
+                ddl2.options.length = 0;
+                for (i = 0; i < thurs.length; i++) {
+                    createOption(ddl2, thurs[i], thurs[i]);
+                }
+                break;
+            case 4:
+                ddl2.options.length = 0;
+                for (i = 0; i < fri.length; i++) {
+                    createOption(ddl2, fri[i], fri[i]);
+                }
+                break;
+            case 5:
+                ddl2.options.length = 0;
+                for (i = 0; i < sat.length; i++) {
+                    createOption(ddl2, sat[i], sat[i]);
+                }
+                break;
+            default:
+                ddl2.options.length = 0;
+                break;
+        }
+
     }
-  }
-}
+
+    function createOption(ddl, text, value) {
+        var opt = document.createElement('option');
+        opt.value = value;
+        opt.text = text;
+        ddl.options.add(opt);
+    }
     </script>
+
 
 
     <h1>Inmate Information</h1>
@@ -124,7 +149,7 @@ window.onclick = function(event) {
                   rows="5"
                   cols="80"></textarea>
     </p>
-    <p><a href="~/Home/About" class="btn btn-primary btn-lg">Save &raquo;</a></p>
+    <p><a href="~/Home/Calendar" class="btn btn-primary btn-lg">Save &raquo;</a></p>
     <p><a href="~/Home/About" class="btn btn-primary btn-lg">Cancel &raquo;</a></p>
 </body>
 </html>
