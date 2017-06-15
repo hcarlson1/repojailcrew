@@ -47,15 +47,19 @@
         .show {
             display: block;
         }
+        h4{
+            text-align: right;
+        }
     </style>
 </head>
-<body>
 
+<body>
+    <h4><a href="~/Home/About" class="btn btn-primary btn-lg">Home &raquo;</a></h4>
     <h2>Available Time Slots</h2>
     <p>
-        Choose 60 minute Slot For New Appointments<br />
+        Choose 60 minute slot for new appointments<br />
         Or<br />
-        Choose 30 Minute Slot for Follow Ups.
+        Choose 30 minute slot for follow ups.
     </p>
 
     <label>Appointment Date</label>
@@ -135,10 +139,53 @@
                id="myDOB"
                value="" />
     </p>
+    </body>
+    <body onload="myUpload()">
+        <label>Upload File(s)</label>
+        <input type="file" id="myFile" multiple size="50" onchange="myUpload()">
+
+        <p id="demo"></p>
+
+        <script>
+            function myUpload() {
+                var x = document.getElementById("myFile");
+                var txt = "";
+                if ('files' in x) {
+                    if (x.files.length == 0) {
+                        txt = "Select one or more files.";
+                    } else {
+                        for (var i = 0; i < x.files.length; i++) {
+                            txt += "<br><strong>File " + (i + 1) + ".</strong><br>";
+                            var file = x.files[i];
+                            if ('name' in file) {
+                                txt += "name: " + file.name + "<br>";
+                            }
+                            if ('size' in file) {
+                                txt += "size: " + file.size + " bytes <br>";
+                            }
+                        }
+                    }
+                }
+                else {
+                    if (x.value == "") {
+                        txt += "Select one or more files.";
+                    } else {
+                        txt += "The files property is not supported by your browser!";
+                        txt += "<br>The path of the selected file: " + x.value; // If the browser does not support the files property, it will return the path of the selected file instead.
+                    }
+                }
+                document.getElementById("demo").innerHTML = txt;
+            }
+        </script>
+
+        <p><strong>Tip:</strong> Use the Control or the Shift key to select multiple files. (Can't view or save these files yet)</p>
+
+    </body>
     <!--Insert Document Upload Here!-->
+<body>    
     <h1>Jailer Info</h1>
     <p>
-        <label>E-mail</label>
+        <label> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;E-mail</label>
         <input type="email"
                id="myMail"
                value="" />

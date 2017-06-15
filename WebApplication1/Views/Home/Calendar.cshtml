@@ -1,11 +1,21 @@
-﻿<html>
+﻿<style>
+    h4{
+        text-align: right;
+    }
+    h3{
+        text-align: center;
+    }
+    p{
+        margin: 4px 180px 2px 180px;
+    }
+</style>
+<html>
 <body>
-    <h3>Confirmation</h3>
+    <h4><a href="~/Home/About" class="btn btn-primary btn-lg">Home &raquo;</a></h4>
+    <h3>Confirmed!</h3>
     <p>
-        Your Appointment has been confirmed for @{DateTime.Now.Date.AddDays(1).AddHours(14);} .
-        Be on your Vsee account 5 minutes before your appointment, and
-        wait for the service provider to contact you.
-        Please use the home button to view another appointment or log out.
+        Your appointment has been confirmed for @DateTime.Now.Date.AddDays(1).AddHours(14). 
+        Please sign on to your VSEE account for the inmate 5 minutes before the start time.
     </p>
 </body>
 </html>
