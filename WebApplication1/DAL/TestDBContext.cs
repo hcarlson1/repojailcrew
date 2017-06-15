@@ -13,6 +13,6 @@ namespace WebApplication1.DAL
         {
 
         }
-        public DbSet<Test> Test { get; set; }
+        public DbSet<Tests> Test { get; set; }
     }
 }

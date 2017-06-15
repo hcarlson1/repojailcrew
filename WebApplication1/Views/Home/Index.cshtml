@@ -1,5 +1,41 @@
-﻿
-<html lang="en">
+﻿<%@ Page Language="C#"
+  Inherits="System.Web.Mvc.ViewPage<List<WebApplications1.Models.Test>>" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <title>Index</title>
+</head>
+<body>
+    <div>
+
+<% foreach (var m in ViewData.Model)
+   { %>
+
+    Email: <%= m.Email %>
+    <br />
+
+    <%= Html.ActionLink("Edit", "Edit", new { id = m.Id })%>
+    <%= Html.ActionLink("Delete", "Delete", new { id = m.Id })%>
+
+        <hr />
+<% } %>
+
+<%= Html.ActionLink("Add Movie", "Add") %>
+
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+<!-- <html lang="en">
 <head>
     <title>formDemo.html</title>
     <meta charset="UTF-8" />
@@ -26,3 +62,4 @@
     </form>
 </body>
 </html>
+    -->
