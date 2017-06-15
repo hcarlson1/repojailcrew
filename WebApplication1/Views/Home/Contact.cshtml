@@ -1,17 +1,130 @@
 ﻿@{
     ViewBag.Title = "Contact";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .dropbtn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+            .dropbtn:hover, .dropbtn:focus {
+                background-color: #3e8e41;
+            }
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            overflow: auto;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+        .dropdown a:hover {
+            background-color: #f1f1f1
+        }
+
+        .show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Available Time Slots</h2>
+    <p>
+        Choose 60 minute Slot For New Appointments<br />
+        Or<br />
+        Choose 30 Minute Slot for Follow Ups.
+    </p>
+
+    <div class="dropdown">
+        <button onclick="myFunction()" class="dropbtn">&nbsp; Appointment Times &nbsp;</button>
+        <div id="myDropdown" class="dropdown-content">
+            <a href="#home">@DateTime.Now.Date.AddHours(14)</a>
+            <a href="#about">@DateTime.Now.Date.AddHours(15)</a>
+            <a href="#contact">@DateTime.Now.Date.AddHours(16)</a>
+        </div>
+    </div>
+
+    <script>
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+    </script>
+
+
+    <h1>Inmate Information</h1>
+    <p>
+        <label>First Name</label>
+        <input type="text"
+               id="myText"
+               value="" />
+    </p>
+    <p>
+        <label>Last Name</label>
+        <input type="text"
+               id="myPwd"
+               value="" />
+    </p>
+    <p>
+        <label>Date of Birth</label>
+        <input type="date"
+               id="myDOB"
+               value="" />
+    </p>
+    <!--Insert Document Upload Here!-->
+    <h1>Jailer Info</h1>
+    <p>
+        <label>E-mail</label>
+        <input type="email"
+               id="myMail"
+               value="" />
+    </p>
+    <p>
+        <label>Additional Information</label>
+        <textarea id="myTextArea"
+                  rows="5"
+                  cols="80"></textarea>
+    </p>
+    <p><a href="~/Home/About" class="btn btn-primary btn-lg">Save &raquo;</a></p>
+    <p><a href="~/Home/About" class="btn btn-primary btn-lg">Cancel &raquo;</a></p>
+</body>
+</html>
