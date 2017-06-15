@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebApplication1.Models;
+using WebApplication1.DAL;
 
 namespace WebApplication1.Controllers
 {
@@ -10,7 +12,18 @@ namespace WebApplication1.Controllers
     {
         public ActionResult Index()
         {
+            using (var ctx = new TestDBContext())
+                {
+               var test = new Test()
+               {
+                   UserName = "hi",
+                   Email = "email@css.edu"
+               };
+                ctx.Test.Add(test);
+                ctx.SaveChanges();
+            }
             return View();
+                
         }
 
         public ActionResult About()
