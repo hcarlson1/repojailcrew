@@ -67,8 +67,17 @@
     <input type="date" id="ddl" onchange="configureDropDownLists(this,document.getElementById('ddl2'))" />
 
     <label>Time</label>
-    <select id="ddl2"></select>
+    <select id="ddl2" onchange="getinfo()"></select>
 
+    <script>
+        function getinfo() {
+            document.getElementById("myText").value = "John";
+            document.getElementById("myPwd").value = "Smith";
+            document.getElementById("myDOB").value = new Date('2011-04-11T10:20:30Z');
+            document.getElementById("myMail").value = "Notanemail@noreply.com";
+            document.getElementById("myTextArea").value = "This sentence provides the additional information need for this inmate.";
+        }
+    </script>
     <script type="text/javascript">
     function configureDropDownLists(ddl1, ddl2) {
         var tues = ['2PM', '3PM', '4PM'];
